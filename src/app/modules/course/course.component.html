@@ -1,0 +1,38 @@
+<div class="course-container">
+  <h2>Course Management</h2>
+
+  <form [formGroup]="courseForm" (ngSubmit)="saveCourse()">
+    <div class="form-group">
+      <label for="name">Course Name</label>
+      <input id="name" formControlName="name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description"
+        required></textarea>
+    </div>
+
+    <button type="submit" class="btn">
+      {{ isEditMode ? 'Update Course' : 'Add Course' }}
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="resetForm()"
+      *ngIf="isEditMode">Cancel</button>
+  </form>
+
+  <div *ngIf="(courses$ | async)?.length">
+    <h3>Course List</h3>
+    <ul class="course-list">
+      <li *ngFor="let course of (courses$ | async)">
+        <div class="course-item">
+          <h4>{{ course?.name }}</h4>
+          <p>{{ course?.description }}</p>
+          <button (click)="editCourse(course)"
+            class="btn btn-edit">Edit</button>
+          <button (click)="deleteCourse(course)"
+            class="btn btn-delete">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

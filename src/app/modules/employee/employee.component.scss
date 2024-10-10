@@ -1,0 +1,114 @@
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$success-color: #28a745;
+$danger-color: #dc3545;
+$warning-color: #ffc107;
+$light-color: #f8f9fa;
+$dark-color: #343a40;
+$white: #ffffff;
+
+$base-padding: 1rem;
+$base-margin: 1rem;
+
+.container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: $base-padding;
+  background-color: $white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    text-align: center;
+    margin-bottom: $base-margin;
+    color: $dark-color;
+    font-size: 1.75rem;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: $base-margin;
+
+    input {
+      padding: $base-padding;
+      border: 1px solid $secondary-color;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+      }
+    }
+
+    button {
+      padding: $base-padding;
+      background-color: $primary-color;
+      color: $white;
+      border: none;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+      cursor: pointer;
+
+      &.update {
+        background-color: $warning-color;
+      }
+
+      &.delete {
+        background-color: $danger-color;
+      }
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+
+  .employee-list {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      padding: $base-padding;
+      border: 1px solid $secondary-color;
+      border-radius: 0.25rem;
+      margin-bottom: $base-margin;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &:hover {
+        background-color: $light-color;
+      }
+
+      button {
+        margin-left: $base-margin;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+
+        &.edit {
+          background-color: $success-color;
+          color: $white;
+
+          &:hover {
+            background-color: darken($success-color, 10%);
+          }
+        }
+
+        &.delete {
+          background-color: $danger-color;
+          color: $white;
+
+          &:hover {
+            background-color: darken($danger-color, 10%);
+          }
+        }
+      }
+    }
+  }
+}

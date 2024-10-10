@@ -1,0 +1,47 @@
+<div class="container">
+  <div *ngIf="loading$ | async" class="loading text-center">Loading
+    items...</div>
+
+  <div class="row">
+    <div class="col col-12">
+      <div class="card">
+        <div class="card-header">Item List</div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li *ngFor="let item of items$ | async"
+              class="list-group-item d-flex justify-content-between align-items-center">
+              {{ item.name }} - {{ item.details }}
+              <div>
+                <button class="btn btn-danger"
+                  (click)="deleteItem(item.id)">Delete</button>
+                <button class="btn btn-warning"
+                  (click)="setEditingItem(item)">Edit</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form #itemForm="ngForm"
+    (ngSubmit)="editingItem ? updateItem(itemForm) : createItem(itemForm)"
+    class="mt-4">
+    <div class="form-group">
+      <label for="itemName">Item Name</label>
+      <input type="text" id="itemName" name="name" ngModel
+        [ngModel]="editingItem?.name" placeholder="Item Name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="itemDetails">Details</label>
+      <input type="text" id="itemDetails" name="details" ngModel
+        [ngModel]="editingItem?.details" placeholder="Item Details" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ editingItem ? 'Update Item'
+      : 'Add Item' }}</button>
+    <button type="button" class="btn btn-secondary"
+      (click)="clearEditing(); itemForm.resetForm()">Cancel</button>
+  </form>
+</div>

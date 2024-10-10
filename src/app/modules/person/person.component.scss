@@ -1,0 +1,165 @@
+
+$primary-color: #4CAF50;
+$secondary-color: #f44336;
+$background-color: #f9f9f9;
+$text-color: #333;
+$error-color: #d9534f;
+$border-radius: 4px;
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: $background-color;
+  padding: 20px;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  color: $text-color;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: $primary-color;
+}
+
+.people-list {
+  list-style: none;
+  padding: 0;
+
+  .person-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: $border-radius;
+    margin-bottom: 10px;
+    background: white;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+
+    .person-info {
+      flex: 1;
+      color: $text-color;
+    }
+
+    .action-buttons {
+      display: flex;
+
+      .btn {
+        margin-left: 5px;
+        border: none;
+        border-radius: $border-radius;
+        padding: 8px 12px;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &.edit-btn {
+          background-color: $primary-color;
+
+          &:hover {
+            background-color: darken($primary-color, 10%);
+          }
+        }
+
+        &.remove-btn {
+          background-color: $secondary-color;
+
+          &:hover {
+            background-color: darken($secondary-color, 10%);
+          }
+        }
+      }
+    }
+  }
+}
+
+.form-container {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: $border-radius;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .form-title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+    color: $text-color;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: $text-color;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: $border-radius;
+      font-size: 16px;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 5px rgba($primary-color, 0.5);
+      }
+    }
+
+    .error {
+      color: $error-color;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: center;
+
+    .btn {
+      margin: 0 5px;
+      padding: 10px 15px;
+      border-radius: $border-radius;
+      cursor: pointer;
+      font-size: 16px;
+
+      &.submit-btn {
+        background-color: $primary-color;
+        color: white;
+
+        &:hover {
+          background-color: darken($primary-color, 10%);
+        }
+        &:disabled{
+          opacity: 0.6;
+        }
+      }
+
+      &.cancel-btn {
+        background-color: #ccc;
+        color: $text-color;
+
+        &:hover {
+          background-color: #bbb;
+        }
+      }
+    }
+  }
+}

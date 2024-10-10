@@ -1,0 +1,65 @@
+<div class="container">
+  <div *ngIf="loading$ | async" class="loading text-center">Loading
+    products...</div>
+
+  <div class="row" *ngIf="(products$ | async)?.length">
+    <div class="col col-12">
+      <div class="card">
+        <div class="card-header">Product List</div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li *ngFor="let product of products$ | async"
+              class="list-group-item d-flex justify-content-between align-items-center">
+              {{ product.name }} - ${{ product.price }}
+              <div>
+                <button class="btn btn-danger"
+                  (click)="deleteProduct(product.id)">Delete</button>
+                <button class="btn btn-warning"
+                  (click)="setEditingProduct(product)">Edit</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form #productForm="ngForm" (ngSubmit)="createProduct(productForm)"
+    *ngIf="!editingProduct">
+    <div class="form-group">
+      <label for="productName">Product Name</label>
+      <input type="text" id="productName" name="name" ngModel
+        placeholder="Product Name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="productPrice">Price</label>
+      <input type="number" id="productPrice" name="price" ngModel
+        placeholder="Price" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Product</button>
+    <button type="button" class="btn btn-secondary"
+      (click)="productForm.reset()">Reset Form</button>
+  </form>
+
+  <!-- Form to Edit Existing Product -->
+  <form *ngIf="editingProduct" #editForm="ngForm"
+    (ngSubmit)="updateProduct(editingProduct)">
+    <div class="form-group">
+      <label for="editProductName">Edit Product Name</label>
+      <input type="text" id="editProductName" name="name"
+        [(ngModel)]="editingProduct.name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="editProductPrice">Edit Price</label>
+      <input type="number" id="editProductPrice" name="price"
+        [(ngModel)]="editingProduct.price" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Update Product</button>
+    <button type="button" class="btn btn-secondary"
+      (click)="clearEditing()">Cancel</button>
+  </form>
+</div>

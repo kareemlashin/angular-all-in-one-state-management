@@ -1,0 +1,205 @@
+
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$success-color: #28a745;
+$danger-color: #dc3545;
+$warning-color: #ffc107;
+$info-color: #17a2b8;
+$light-color: #f8f9fa;
+$dark-color: #343a40;
+
+$border-radius: 0.25rem;
+$padding: 0.5rem 1rem;
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: $light-color;
+  color: $dark-color;
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: $padding;
+  margin: 0.25rem;
+  border: none;
+  border-radius: $border-radius;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+
+  &.btn-primary {
+    background-color: $primary-color;
+    color: white;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  &.btn-secondary {
+    background-color: $secondary-color;
+    color: white;
+
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+    }
+  }
+
+  &.btn-success {
+    background-color: $success-color;
+    color: white;
+
+    &:hover {
+      background-color: darken($success-color, 10%);
+    }
+  }
+
+  &.btn-danger {
+    background-color: $danger-color;
+    color: white;
+
+    &:hover {
+      background-color: darken($danger-color, 10%);
+    }
+  }
+
+  &.btn-warning {
+    background-color: $warning-color;
+    color: white;
+
+    &:hover {
+      background-color: darken($warning-color, 10%);
+    }
+  }
+
+  &.btn-info {
+    background-color: $info-color;
+    color: white;
+
+    &:hover {
+      background-color: darken($info-color, 10%);
+    }
+  }
+
+  &.btn-light {
+    background-color: $light-color;
+    color: $dark-color;
+
+    &:hover {
+      background-color: lighten($light-color, 10%);
+    }
+  }
+
+  &.btn-dark {
+    background-color: $dark-color;
+    color: white;
+
+    &:hover {
+      background-color: darken($dark-color, 10%);
+    }
+  }
+}
+
+.card {
+  border: 1px solid $secondary-color;
+  border-radius: $border-radius;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+
+  .card-header {
+    background-color: $primary-color;
+    color: white;
+    padding: $padding;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+  }
+
+  .card-body {
+    padding: $padding;
+  }
+}
+
+.form-group {
+  margin-bottom: 1rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: $padding;
+    border: 1px solid $secondary-color;
+    border-radius: $border-radius;
+    font-size: 1rem;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: $primary-color;
+    outline: none;
+    box-shadow: 0 0 5px rgba($primary-color, 0.5);
+  }
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -0.5rem;
+
+  .col {
+    padding: 0 0.5rem;
+
+    &.col-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    &.col-4 {
+      flex: 0 0 33.333%;
+      max-width: 33.333%;
+    }
+
+    &.col-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.p-1 {
+  padding: 0.25rem;
+}
+ul{
+  list-style: none;
+}

@@ -1,0 +1,33 @@
+<div class="member-container">
+  <h1>Members List</h1>
+
+  <form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" formControlName="name" />
+      <div *ngIf="memberForm.get('name')?.invalid && memberForm.get('name')?.touched" class="error">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" />
+      <div *ngIf="memberForm.get('email')?.invalid && memberForm.get('email')?.touched" class="error">
+        Valid email is required.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="memberForm.invalid">
+      {{ isEditMode ? 'Update Member' : 'Add Member' }}
+    </button>
+  </form>
+
+  <ul class="member-list">
+    <li *ngFor="let member of members()">
+      {{ member.name }} ({{ member.email }})
+      <button (click)="editMember(member)">Edit</button>
+      <button (click)="deleteMember(member.id)">Delete</button>
+    </li>
+  </ul>
+</div>

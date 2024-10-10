@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>Employee Management</h2>
+
+  <div class="input-group">
+    <input [(ngModel)]="newEmployee.name" placeholder="Name" required />
+    <input [(ngModel)]="newEmployee.position" placeholder="Position" required />
+    <input type="number" [(ngModel)]="newEmployee.salary" placeholder="Salary" required />
+    <button (click)="updateEmployeeId ? updateEmployee() : createEmployee()">
+      {{ updateEmployeeId ? 'Update Employee' : 'Add Employee' }}
+    </button>
+  </div>
+
+  <ul class="employee-list">
+    <li *ngFor="let employee of employees">
+      {{ employee.name }} - {{ employee.position }} - ${{ employee.salary }}
+      <button class="edit" (click)="editEmployee(employee)">Edit</button>
+      <button class="delete" (click)="deleteEmployee(employee.id)">Delete</button>
+    </li>
+  </ul>
+</div>
